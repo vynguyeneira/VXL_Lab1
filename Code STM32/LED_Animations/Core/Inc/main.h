@@ -64,12 +64,26 @@ void Error_Handler(void);
 #define LED_YELLOW_1h_GPIO_Port GPIOA
 #define LED_GREEN_1h_Pin GPIO_PIN_7
 #define LED_GREEN_1h_GPIO_Port GPIOA
+#define Seg_a_Pin GPIO_PIN_0
+#define Seg_a_GPIO_Port GPIOB
+#define Seg_b_Pin GPIO_PIN_1
+#define Seg_b_GPIO_Port GPIOB
+#define Seg_c_Pin GPIO_PIN_2
+#define Seg_c_GPIO_Port GPIOB
 #define LED_RED_2v_Pin GPIO_PIN_8
 #define LED_RED_2v_GPIO_Port GPIOA
 #define LED_YELLOW_2v_Pin GPIO_PIN_9
 #define LED_YELLOW_2v_GPIO_Port GPIOA
 #define LED_GREEN_2v_Pin GPIO_PIN_10
 #define LED_GREEN_2v_GPIO_Port GPIOA
+#define Seg_d_Pin GPIO_PIN_3
+#define Seg_d_GPIO_Port GPIOB
+#define Seg_e_Pin GPIO_PIN_4
+#define Seg_e_GPIO_Port GPIOB
+#define Seg_f_Pin GPIO_PIN_5
+#define Seg_f_GPIO_Port GPIOB
+#define Seg_g_Pin GPIO_PIN_6
+#define Seg_g_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
