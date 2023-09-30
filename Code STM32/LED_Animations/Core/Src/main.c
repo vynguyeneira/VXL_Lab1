@@ -155,7 +155,7 @@ int main(void)
 
   int state = RED1_GREEN2;
 
-  int num = 0; //For 7 Led Segment
+  int num = 5; //For 7 Led Segment countdown
 
   while (1)
   {
@@ -231,10 +231,14 @@ int main(void)
 		  }
 	  }
 
-	  if (num >= 10) num = 0;
-	  display7SEG(num++);
+	  if (num <= 0)
+	  {
+		  num = 5;
+	  }
 
-		  HAL_Delay(1000);
+	  display7SEG(num--);
+
+	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
