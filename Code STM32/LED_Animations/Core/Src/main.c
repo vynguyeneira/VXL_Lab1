@@ -95,7 +95,7 @@ int main(void)
   int number_of_led = 0;
   while (1)
   {
-	  if (number_of_led < 1 || number_of_led > 12)
+	  if (number_of_led < 1 || number_of_led > 12)  //Turn off all Led before turn every LED in a sequence
 	  {
 		  HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin|
 				  LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin|LED_9_Pin|
@@ -103,7 +103,7 @@ int main(void)
 		  number_of_led = 0;
 	  }
 
-	  switch (number_of_led)
+	  switch (number_of_led) // turn every LED in a sequence
 	  {
 		case 1:
 			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
