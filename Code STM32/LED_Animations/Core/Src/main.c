@@ -66,40 +66,43 @@ void setNumberOnClock(int num)
 	  switch (num)
 	  {
 		case 0:
-			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
-			break;
-		case 1:
 			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
 			break;
-		case 2:
+		case 1:
 			HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
 			break;
-		case 3:
+		case 2:
 			HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, RESET);
 			break;
-		case 4:
+		case 3:
 			HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, RESET);
 			break;
-		case 5:
+		case 4:
 			HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, RESET);
 			break;
-		case 6:
+		case 5:
 			HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, RESET);
 			break;
-		case 7:
+		case 6:
 			HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, RESET);
 			break;
-		case 8:
+		case 7:
 			HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, RESET);
 			break;
-		case 9:
+		case 8:
 			HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, RESET);
 			break;
-		case 10:
+		case 9:
 			HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, RESET);
 			break;
-		case 11:
+		case 10:
 			HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, RESET);
+			break;
+		case 11:
+			HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
+			break;
+		case 12:
+			HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
 			break;
 		default:
 			break;
@@ -143,18 +146,35 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  int num = 0; // input "num" is from 0
+  int second = 30;
+  int minute = 59;
+  int hour = 1;      //Time at start is 01:59:30
 
   while (1)
   {
 	//Turn off all Leds to start.
 	clearAllClock();
 
-	// invoke "setNumberOnClock(int num)" function
-	setNumberOnClock(num);
+	// 1 minute = 60 seconds, 1 hour = 60 minutes
 
-	num++;
-	if(num > 11) num = 0; //input "num" is to 11
+	second++;
+
+	if (second >= 60)
+	{
+		minute++;
+		second = 0;
+
+		if (minute >= 60)
+		{
+			hour++;
+			minute = 0;
+			if (hour >= 12) hour = 0;  //start a new cycle
+		}
+	}
+
+	setNumberOnClock(hour);
+	setNumberOnClock(minute / 5); //The distance between 2 LEDs corresponds to 5 minutes on the clock.
+	setNumberOnClock(second / 5); //The distance between 2 LEDs corresponds to 5 seconds on the clock.
 
 	HAL_Delay(500);  //Delay 0.5s for faster testing
 
